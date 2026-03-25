@@ -1,0 +1,22 @@
+name: Validate projects.yml
+
+on:
+  pull_request:
+    paths:
+      - "_data/projects.yml"
+  push:
+    branches: [main]
+    paths:
+      - "_data/projects.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pyyaml
+        run: pip install pyyaml
+
+      - name: Validate project entries
+        run: python3 _validate.py
