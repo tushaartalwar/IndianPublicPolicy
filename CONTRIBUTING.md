@@ -1,115 +1,111 @@
 # Contributing to the AI for Public Policy Directory
 
-We want this directory to be comprehensive and useful. If you've built, discovered, or use an AI tool for public policy — please add it here.
+Thanks for wanting to add a project! It takes about 5 minutes.
 
-## What belongs in this directory?
+You'll be editing one file — `_data/projects.yml` — and submitting a pull request. No coding required.
 
-Any tool, dashboard, visualisation, dataset, or project that uses AI/ML techniques to support public policy work. This includes:
+---
 
-- Parliamentary or legislative trackers
-- Budget analysis and visualisation tools
-- Regulation and compliance monitors
-- Citizen-facing tools (RTI helpers, grievance assistants, etc.)
-- Policy brief generators or research aids
-- Government data dashboards with AI-powered insights
-- NLP tools for analysing government documents
-- Open datasets curated for policy research
+## What can I add?
 
-The project can be open-source or not, finished or in-progress, India-focused or global. If it helps someone working in public policy, it belongs here.
+Anything that uses AI to help with public policy work. For example:
 
-## How to add a project
+- A dashboard that tracks parliamentary proceedings
+- A tool that summarises government reports
+- A visualisation of budget allocations
+- An assistant that helps citizens file RTI requests
+- A dataset curated for policy research
 
-### Step 1: Fork this repository
+It can be open-source or not, finished or in-progress, India-focused or global.
 
-Click the **Fork** button at the top right of the [GitHub repo page](https://github.com/pranaykotas/IndianPublicPolicy).
+---
 
-### Step 2: Add your project entry
+## Step 1: Pick your category
 
-Open `_data/projects.yml` and add your project **at the end** of the file. Use this exact format:
+Every project belongs to one category. Choose the one that fits best:
+
+| Category | What it means |
+|----------|---------------|
+| **Visualisations** | Live trackers and dashboards that display data in real time |
+| **Analytical Tools** | Tools others can download and use for their own analysis |
+| **AI Reports** | Data presented accessibly — but not updated live |
+| **Admin Tools** | Tools that help think tanks and research organisations run better |
+| **Other** | Doesn't fit the above? Use this |
+
+Not sure? Pick the closest one — we can always fix it during review.
+
+---
+
+## Step 2: Write your entry
+
+Open `_data/projects.yml` and add your project at the **very end** of the file.
+
+Copy this template and fill it in:
 
 ```yaml
 - name: "Your Project Name"
   category: "Analytical Tools"
-  description: "A clear, one-to-two sentence description of what the tool does and who it helps"
+  description: "One or two sentences on what it does and who it helps."
   url: "https://github.com/your-org/your-project"
   tags: ["tag1", "tag2", "tag3"]
 ```
 
-### Step 3: Choose a category
+**Here's a real example to copy from:**
 
-Every project must have exactly one category. Pick the one that best fits:
+```yaml
+- name: "ParliamentWatch"
+  category: "Analytical Tools"
+  description: "Track, search, and get AI-powered summaries of Indian Parliamentary Committee reports from all 16 DRSCs across Lok Sabha and Rajya Sabha"
+  url: "https://github.com/pranaykotas/parliamentwatch"
+  tags: ["parliament", "india", "nlp", "tracking", "open-data"]
+```
 
-| Category | What belongs here | Examples |
-|----------|-------------------|----------|
-| **Visualisations** | Trackers and live dashboards that display data in real time or near-real time | Live parliamentary trackers, budget dashboards, election result maps |
-| **Analytical Tools** | Tools that others can deploy and use for their own analysis | ParliamentWatch, regulation classifiers, text analysis pipelines |
-| **AI Reports** | Data presented in better, more accessible ways — but not updated live | AI-generated policy briefs, one-time data summaries, curated report collections |
-| **Admin Tools** | Tools useful for running think tanks and research organisations | Grant management tools, publication workflows, event dashboards |
-| **Other** | Projects that don't fit neatly into the above | Datasets, experimental prototypes, multi-purpose platforms |
+### Field rules
 
-If you're unsure, pick the closest fit — we can always recategorise during review.
+**`name`** — The project name. No need to add "AI" or "Tool" at the end.
 
-### Step 4: Follow these field guidelines
+**`category`** — Must be exactly one of: `Visualisations`, `Analytical Tools`, `AI Reports`, `Admin Tools`, `Other`. Spelling and capitalisation matter.
 
-| Field | Rules |
-|-------|-------|
-| `name` | The official project or tool name. No need to add "AI" or "Tool" as a suffix. |
-| `category` | One of: `Visualisations`, `Analytical Tools`, `AI Reports`, `Admin Tools`, `Other`. Case-sensitive. |
-| `description` | One or two sentences, max 200 characters. Focus on **what it does and for whom**, not the tech stack. Good: *"Tracks new regulations across Indian ministries and classifies them by sector."* Bad: *"A Python-based NLP pipeline using BERT for text classification."* |
-| `url` | Link to the project's GitHub repo, documentation site, or homepage. Must be a working link. |
-| `tags` | 2–5 lowercase tags. Use hyphens for multi-word tags. Reuse existing tags (see below) before inventing new ones. |
+**`description`** — Keep it under 200 characters. Write what it does and who it's for — not what technology it uses.
+- ✅ Good: *"Tracks new regulations across Indian ministries and classifies them by sector."*
+- ❌ Bad: *"A Python-based NLP pipeline using BERT for text classification."*
 
-### Step 5: Choose your tags
+**`url`** — Must start with `https://` or `http://`. Link to the GitHub repo, project website, or documentation.
 
-Browse the existing tags on the [directory homepage](https://pranaykotas.github.io/IndianPublicPolicy/) to see what's already in use. Here are the common categories:
+**`tags`** — 2 to 5 tags, all **lowercase**, with **hyphens** instead of spaces. Browse the [directory homepage](https://pranaykotas.github.io/IndianPublicPolicy/) to see tags already in use.
 
-**By domain:**
-`parliament` `budget` `regulation` `public-finance` `education` `health` `climate` `defence` `trade` `urban` `agriculture` `judiciary`
+> **YAML tip:** Indentation matters. Each field must be indented with exactly 2 spaces (not tabs). If in doubt, paste your entry into [yamllint.com](https://www.yamllint.com/) to check before submitting.
 
-**By function:**
-`tracking` `visualisation` `analytics` `dashboard` `writing` `citizen-tools` `summarisation` `search` `alerts`
+---
 
-**By technology:**
-`nlp` `llm` `classification` `computer-vision` `open-data` `geospatial`
+## Step 3: Submit a pull request
 
-**By region:**
-`india` `usa` `uk` `eu` `africa` `southeast-asia` `global`
+1. Fork this repository (click **Fork** at the top right of [this page](https://github.com/pranaykotas/IndianPublicPolicy))
+2. Make your edit to `_data/projects.yml`
+3. Commit with a message like: `Add ProjectName to directory`
+4. Open a pull request against the `main` branch
 
-If none of the existing tags fit, create a new one — but keep it short and descriptive.
+---
 
-### Step 6: Validate your YAML
+## What happens after you submit
 
-Before submitting, make sure your YAML is valid:
+When you open a pull request, automated checks run immediately:
 
-- Strings with special characters (colons, quotes) must be wrapped in double quotes
-- Tags must be a YAML list: `["tag1", "tag2"]`
-- Indentation must use spaces, not tabs
-- Each entry starts with `- name:` (note the leading hyphen and space)
+- **Validation** — checks that all required fields are present, the category is valid, the description isn't too long, the URL is well-formed, and there are no duplicates
+- **Review** — a maintainer will review and merge, usually within a few days
 
-You can paste your YAML into [yamllint.com](https://www.yamllint.com/) to check for errors.
+If the validation check fails, you'll see a clear error message in the PR explaining what to fix. Common issues are a wrong category name or a description that's too long.
 
-### Step 7: Submit a pull request
+---
 
-1. Commit your change with a message like: `Add [Project Name] to directory`
-2. Open a pull request against the `main` branch
-3. In the PR description, briefly mention what the project does
+## Updating or removing a project
 
-We'll review and merge it promptly.
+**To update** a project's URL, description, or tags: edit the entry in `_data/projects.yml` and submit a PR.
 
-## Updating an existing entry
+**To remove** a project: delete the entry and submit a PR, briefly explaining why (e.g. the project has shut down).
 
-If a project's URL, description, or tags have changed, you're welcome to submit a PR updating them. Just edit the relevant entry in `_data/projects.yml`.
-
-## Removing a project
-
-If a project has been taken down, archived, or is no longer relevant, open an issue or PR to remove it. Please explain why.
-
-## Code of conduct
-
-- Only add projects that genuinely exist and work (or are clearly marked as work-in-progress)
-- Do not add spam, promotional links, or unrelated tools
-- Keep descriptions accurate and neutral
+---
 
 ## Questions?
 
-Open an [issue](https://github.com/pranaykotas/IndianPublicPolicy/issues) if you have questions, suggestions, or want to discuss what belongs in this directory.
+Open an [issue](https://github.com/pranaykotas/IndianPublicPolicy/issues) and we'll help.

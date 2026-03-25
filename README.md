@@ -16,6 +16,7 @@ This directory aims to be that place: a simple, searchable catalog where anyone 
 - The website is built with [Quarto](https://quarto.org) and deployed to GitHub Pages
 - Search and tag-based filtering work entirely in the browser — no backend, no database
 - Anyone can add a project by editing the YAML file and submitting a pull request
+- PRs are validated automatically — entries with missing fields, bad URLs, or duplicates fail fast
 
 ## Add your project
 
@@ -30,32 +31,40 @@ If you've built or know of an AI tool for public policy, we'd love to include it
      url: "https://github.com/your-org/your-project"
      tags: ["tag1", "tag2", "tag3"]
    ```
-3. Submit a pull request
+3. Submit a pull request — automated checks will validate your entry
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on descriptions, tags, and formatting.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.
 
 ## Run locally
 
-You need [Quarto](https://quarto.org/docs/get-started/) and [R](https://cran.r-project.org/) installed.
+You need [Quarto](https://quarto.org/docs/get-started/) and Python 3 installed.
 
 ```bash
-# Install the yaml R package (one time)
-Rscript -e 'install.packages("yaml")'
+# Install dependencies (one time)
+pip install pyyaml
 
-# Preview the site
-quarto preview
+# Generate project HTML and preview the site
+python3 _build.py && quarto preview
 ```
 
 ## Project structure
 
 ```
-_data/projects.yml     # All project entries live here
-index.qmd              # Homepage with search and card grid
-about.qmd              # About page
-search.js              # Client-side search and filtering
-styles.css             # Card grid and UI styling
-CONTRIBUTING.md        # Guide for contributors
-.github/workflows/     # Auto-deploy to GitHub Pages
+_data/
+  projects.yml          # All project entries — edit this to add a project
+  link_exceptions.yml   # URLs to skip during link checking
+_build.py               # Generates HTML from projects.yml (pre-render)
+_validate.py            # Validates projects.yml — run locally or in CI
+_check_links.py         # Checks all project URLs for dead links
+index.qmd               # Homepage
+about.qmd               # About page
+search.js               # Client-side search and filtering
+styles.css              # Card grid and UI styling
+CONTRIBUTING.md         # Guide for contributors
+.github/workflows/
+  deploy.yml            # Auto-deploy to GitHub Pages on push to main
+  validate.yml          # Validates projects.yml on every PR
+  check-links.yml       # Weekly dead link checker
 ```
 
 ## Maintained by
